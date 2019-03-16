@@ -1,0 +1,32 @@
+
+// Sample code to perform I/O:
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int num,a[10],i,j;
+	cin >> num;
+	for(i=0;i<num;i++)
+	cin>>a[i];
+for(j=0;j<num;j++)
+{
+for(i=1;i<=a[j];i++)
+{
+    if(((i%3)==0)&&((i%5)==0))
+    cout<<"FizzBuzz";
+    else if((i%3)==0)
+    cout<<"Fizz";
+    else if((i%5)==0)
+    cout<<"Buzz";
+    else
+    cout<<i;
+    cout<<"\n";
+}
+}	
+	// Reading input from STDIN
+//	cout << "Input number is " << num << endl;		// Writing output to STDOUT
+
+return 0;    
+}
