@@ -1,0 +1,51 @@
+// A school method based C++ program to check if a 
+// number is prime 
+#include <bits/stdc++.h> 
+using namespace std; 
+ 
+bool isPrime(long long int n) 
+{ 
+	// Corner case 
+	if (n <= 1) 
+		return false; 
+ 
+	// Check from 2 to n-1 
+	for (int i = 2; i*i<=n; i++) 
+		if (n % i == 0) 
+			return false; 
+ 
+	return true; 
+} 
+int getSum(long long int n) 
+    {  
+    int sum = 0; 
+    while (n != 0) 
+    { 
+     sum = sum + n % 10; 
+     n = n/10; 
+    }  
+ return sum; 
+ } 
+// Driver Program to test above function 
+int main() 
+{ 
+long long int i,j,q,count,a[300000][2],sum;
+cin>>q;
+for(i=0;i<q;i++)
+{cin>>a[i][0]>>a[i][1];
+}
+for(i=0;i<q;i++)
+{   count=0;
+    for(j=a[i][0];j<=a[i][1];j++)
+    {
+        if(isPrime(j)==true)
+        {
+            sum=getSum(j);
+            if(isPrime(sum)==true)
+            count++;
+        }
+    }
+    cout<<count<<"\n";
+}
+	return 0; 
+} 
