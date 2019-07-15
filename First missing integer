@@ -1,0 +1,9 @@
+int k=1;
+sort( A.begin(), A.end());
+for(int i=0;i< A.size();i++)
+if( A[i]>0)
+{if( A[i]==k)
+k++;
+else
+break;}
+return k;
