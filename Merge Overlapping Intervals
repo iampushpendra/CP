@@ -1,0 +1,58 @@
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+bool compare(Interval a,Interval b){
+    return a.start<b.start;
+}
+vector<Interval> Solution::merge(vector<Interval> &A) {
+    sort(A.begin(),A.end(),compare);
+    int n=A.size();
+    int ct=0;
+    vector<Interval> p;
+    for(int i=0;i<n-1;i++)
+    {   Interval ax;
+        if(A[i].end>A[i+1].start)
+            {   
+                if(A[i].end>=A[i+1].end)
+                    ax.end=A[i].end;
+                else    
+                    ax.end=A[i+1].end;
+                ax.start=min(A[i].start,A[i+1].start);
+                A[i+1]=ax;
+                //A.push_back(A[i]);
+            }
+        else if(A[i].end==A[i+1].start)
+        {
+            ax.start=A[i].start;
+            ax.end=A[i+1].end;
+             A[i+1]=ax;
+            //A.push_back(A[i]);
+        }
+        else if(A[i].start==A[i+1].start)
+        {
+            ax.start=A[i].start;
+            ax.end=max(A[i].end,A[i+1].end);
+             A[i+1]=ax;
+            //A.push_back(A[i]);
+        }
+        else
+        {   ax.start=A[i].start;
+            ax.end=A[i].end;
+            p.push_back(ax);
+            ct=1;
+        }
+    }    
+  
+    p.push_back(A.back());
+    return p;
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details;
+}
