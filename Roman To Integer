@@ -1,0 +1,26 @@
+int roman(char c)
+{   int val=0;
+    switch(c)
+    {
+        case 'I':val=1;break;
+        case 'V':val=5;break;
+        case 'X':val=10;break;
+        case 'L':val=50;break;
+        case 'C':val=100;break;
+        case 'D':val=500;break;
+        case 'M':val=1000;break;
+        default : val=0;
+    }
+    return val;
+}
+
+int Solution::romanToInt(string A) {
+    int sum =0;
+    for(int i=0;i<A.length();i++){
+        if(i>0&&roman(A[i])>roman(A[i-1]))
+            sum+=roman(A[i])-2*roman(A[i-1]);
+        else
+            sum+=roman(A[i]);
+    }
+    return sum;
+}
