@@ -1,0 +1,15 @@
+int Solution::solve(vector<int> &A, vector<int> &B ,vector<int> &C) {
+    int dif=INT_MAX,ndiff;
+    int ma=(A.size()-1),mb=(B.size()-1),mc=(C.size()-1);
+   do{
+        int x=max({A[ma],B[mb],C[mc]});
+        int y=min({A[ma],B[mb],C[mc]});
+        ndiff=x-y;
+        if(ndiff<dif) dif=ndiff;
+        if(x==A[ma]) ma--;
+        else if(x==B[mb]) mb--;
+        else mc--;
+    }while((ma>=0)&&(mb>=0)&&(mc>=0));
+    return dif;
+    
+}
