@@ -1,0 +1,89 @@
+string roman(int x,string a,int counter){
+    switch(counter){
+        case 1:
+            if((x<=3)&&(x>=1))
+            {
+                for(int i=0;i<x;i++)
+                    a.push_back('I');
+            }
+            else if((x<=8)&&x>=5)
+            {   a.push_back('V');
+                x-=5;
+                for(int i=0;i<x;i++)
+                    a.push_back('I');
+            }
+            else if((x==4)||(x==9))
+            {   a.push_back('I');
+                if(x==4)    a.push_back('V');
+                else a.push_back('X');
+            }
+            break;
+        case 2:
+            if((x<=3)&&(x>=1))
+            {
+                for(int i=0;i<x;i++)
+                    a.push_back('X');
+            }
+            else if((x<=8)&&x>=5)
+            {   a.push_back('L');
+                x-=5;
+                for(int i=0;i<x;i++)
+                    a.push_back('X');
+            }
+            else if((x==4)||(x==9))
+            {   a.push_back('X');
+                if(x==4)    a.push_back('L');
+                else a.push_back('C');
+            }
+            break;
+        case 3:
+            if((x<=3)&&(x>=1))
+            {
+                for(int i=0;i<x;i++)
+                    a.push_back('C');
+            }
+            else if((x<=8)&&x>=5)
+            {   a.push_back('D');
+                x-=5;
+                for(int i=0;i<x;i++)
+                    a.push_back('C');
+            }
+            else if((x==4)||(x==9))
+            {   a.push_back('C');
+                if(x==4)    a.push_back('D');
+                else a.push_back('M');
+            }
+            break;
+        case 4:
+            for(int i=0;i<x;i++)
+                    a.push_back('M');
+            break;
+            
+    }
+    return a;
+}
+string Solution::intToRoman(int A) {
+    string a;int x=A;
+    if(x<10)
+        a=roman(x,a,1);
+    else if((x<100)&&(x>9)){
+        a=roman(x/10,a,2);
+        a=roman(x%10,a,1);
+    }
+    else if((x<1000)&&(x>99)){
+        a=roman(x/100,a,3);
+        x=x%100;
+        a=roman(x/10,a,2);
+        a=roman(x%10,a,1);
+    }
+    else if(x>=1000){
+        a=roman(x/1000,a,4);
+        x=x%1000;
+        a=roman(x/100,a,3);
+        x=x%100;
+        a=roman(x/10,a,2);
+        a=roman(x%10,a,1);
+    }
+    
+    return a;
+}
