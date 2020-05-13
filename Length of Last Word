@@ -1,0 +1,14 @@
+int Solution::lengthOfLastWord(const string A) {
+    int n=A.length();
+    int c=0,p=0;
+    for(int j=n-1;j>=0;j--){
+        if(A[j]==' '){
+            if(p==1)    
+                break;
+        }
+        else{   p=1;
+            c++;
+        }    
+    }
+    return c;
+}
