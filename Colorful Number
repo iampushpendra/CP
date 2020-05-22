@@ -1,0 +1,21 @@
+int Solution::colorful(int A) {
+    vector<int> a;
+    while(A>0){
+    a.push_back(A%10);
+    A=A/10;
+    }
+    int n=a.size();
+    unordered_map<int,int> um;
+    for(int i=0;i<n;i++){
+        int prod=a[i];
+        um[prod]++;
+        for(int j=i+1;j<n;j++){
+            prod=prod*a[j];
+            um[prod]++;
+        }
+    }
+    for(auto ele:um)
+        if(ele.second>=2)
+            return 0;
+    return 1;
+}
